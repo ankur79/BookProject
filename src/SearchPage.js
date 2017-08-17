@@ -7,10 +7,10 @@ class SearchPage extends React.Component {
     return (
       <div>
         <SearchField
-          oncloseSearch = {() => {
+          oncloseSearch={() => {
             this.props.oncloseSearch();
           }}
-          onSearchBooks = {(query) => {
+          onSearchBooks={(query) => {
             this.props.onSearchBooks(query);
           }}
         />
@@ -19,11 +19,11 @@ class SearchPage extends React.Component {
             {this.props.bookCollection.map(book => {
               let {id, imageLinks, title, authors, shelf} = book;
               return <Book
-                        onUpdateBook = {(book, shelf) => {
+                        onUpdateBook={(book, shelf) => {
                           this.props.onUpdateBook(book, shelf);
                         }}
-                        key = {book.id}
-                        data = {{id, imageLinks, title, authors, shelf}}
+                        key={book.id}
+                        data={{id, imageLinks, title, authors, shelf}}
                       />
             }
           )}

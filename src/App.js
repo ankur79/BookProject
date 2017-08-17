@@ -49,9 +49,9 @@ class BooksApp extends React.Component {
         <Route exact path="/" render={() =>
           <div>
             <BookShelf
-                shelfList = {this.state.shelfList}
-                bookCollection = {this.state.books}
-                onUpdateBook = {(book, shelf) => {
+                shelfList={this.state.shelfList}
+                bookCollection={this.state.books}
+                onUpdateBook={(book, shelf) => {
                   this.updateBook(book, shelf);
                 }}
             />
@@ -61,11 +61,11 @@ class BooksApp extends React.Component {
         <Route path="/search" render={({history}) =>
           <div>
             <SearchPage
-              bookCollection = {this.state.searchResult}
-              onUpdateBook = {(book, shelf) => {
+              bookCollection={this.state.searchResult}
+              onUpdateBook={(book, shelf) => {
                 this.updateBook(book, shelf);
               }}
-              onSearchBooks = {(query) => {
+              onSearchBooks={(query) => {
                 this.searchBooks(query);
               }}
             />

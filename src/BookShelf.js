@@ -20,9 +20,9 @@ class BookShelf extends React.Component {
                       if(String(Object.keys(shelf)) === book.shelf){
                         let {id, imageLinks, title, authors, shelf} = book;
                         return <Book
-                                  onUpdateBook = {this.props.onUpdateBook}
-                                  key = {book.id}
-                                  data = {{id, imageLinks, title, authors, shelf}}
+                                  onUpdateBook={this.props.onUpdateBook}
+                                  key={book.id}
+                                  data={{id, imageLinks, title, authors, shelf}}
                                 />
                         }else{
                           return ""

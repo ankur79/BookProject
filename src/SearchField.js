@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 class SearchField extends React.Component {
+  static PropTypes = {
+    onSearchBooks: PropTypes.func.isRequired
+  }
+
   searchBooks = (e) => {
 		e.preventDefault();
     this.props.onSearchBooks(e.target.value);

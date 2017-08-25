@@ -2,11 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Book extends React.Component {
-  static PropTypes = {
-    onUpdateBook: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired
-  }
-
   updateShelf = (e) => {
     e.preventDefault();
     this.props.onUpdateBook(this.props.data, e.target.value);
@@ -16,13 +11,14 @@ class Book extends React.Component {
     const book = this.props.data;
     const authors = book.authors !== undefined ? Object.values(book.authors).map(author => author) : [];
     const thumbnail = book.imageLinks.thumbnail;
+    const shelf = book.shelf === undefined ? "none" : book.shelf;
     return (
       <li>
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("'+thumbnail+'")' }}></div>
             <div className="book-shelf-changer">
-              <select onChange={this.updateShelf} value={book.shelf}>
+              <select onChange={this.updateShelf} value={shelf}>
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
@@ -37,6 +33,11 @@ class Book extends React.Component {
       </li>
     )
   }
-}
+};
+
+Book.propTypes = {
+  onUpdateBook: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired
+};
 
 export default Book
